@@ -40,12 +40,16 @@ android {
 
 dependencies {
 
+    //SplashScreen
+    implementation(libs.androidx.core.splashscreen)
+
     //Lottie
     implementation(libs.lottie)
 
     //Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    api(libs.androidx.navigation.fragment.ktx)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
