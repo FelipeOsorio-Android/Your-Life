@@ -51,6 +51,10 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     api(libs.androidx.navigation.fragment.ktx)
 
+    //DataStore
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
