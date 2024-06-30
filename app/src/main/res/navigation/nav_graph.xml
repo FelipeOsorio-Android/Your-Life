@@ -7,16 +7,28 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.yourlife.fragments.SplashFragment"
-        android:label="SplashFragment"
-        app:route="SplashScreen"/>
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/action_splashFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="com.example.yourlife.fragments.HomeScreenFragment"
         android:label="HomeScreenFragment"
-        app:route="HomeScreen"/>
+        app:route="HomeScreen">
+        <action
+            android:id="@+id/action_homeScreenFragment_to_resultScreenFragment"
+            app:destination="@id/resultScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resultScreenFragment"
         android:name="com.example.yourlife.fragments.ResultScreenFragment"
-        android:label="ResultScreenFragment"
-        app:route="ResultScreen"/>
+        android:label="ResultScreenFragment">
+        <action
+            android:id="@+id/action_resultScreenFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
 </navigation>
