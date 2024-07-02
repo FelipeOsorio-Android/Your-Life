@@ -1,24 +1,12 @@
 package com.example.yourlife
 
-import android.content.Context
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.doublePreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
+import androidx.navigation.findNavController
 import com.example.yourlife.databinding.ActivityMainBinding
-
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userAttributes")
-
-sealed class PreferenceKey {
-
-    companion object {
-        val userImc = doublePreferencesKey("imc")
-    }
-}
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,10 +14,30 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private val navController by lazy {
+        findNavController(R.id.fragmentContainerView)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         enableEdgeToEdge()
         setContentView(binding.root)
+
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        onBackPressedDispatcher.addCallback {
+            val currentRoute = navController.currentDestination?.route
+
+            when (currentRoute) {
+                "homeFragScreen" -> finish()
+                "resultFragScreen" -> navController.navigate(R.id.action_resultScreenFragment_to_homeScreenFragment)
+            }
+        }
+
+    }
+
 }
