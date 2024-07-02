@@ -18,7 +18,7 @@
         android:id="@+id/homeScreenFragment"
         android:name="com.example.yourlife.fragments.HomeScreenFragment"
         android:label="HomeScreenFragment"
-        app:route="HomeScreen">
+        app:route="homeFragScreen">
         <action
             android:id="@+id/action_homeScreenFragment_to_resultScreenFragment"
             app:destination="@id/resultScreenFragment" />
@@ -26,9 +26,14 @@
     <fragment
         android:id="@+id/resultScreenFragment"
         android:name="com.example.yourlife.fragments.ResultScreenFragment"
-        android:label="ResultScreenFragment">
+        android:label="ResultScreenFragment"
+        app:route="resultFragScreen">
         <action
             android:id="@+id/action_resultScreenFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
+        <argument
+            android:name="userImcArgs"
+            app:argType="string"
+            android:defaultValue=" " />
     </fragment>
 </navigation>
